@@ -13,7 +13,7 @@
     @foreach($custom_avatars as $custom_avatar)
         <tr id="avatar-id-{{$custom_avatar->id}}" class="handle" data-id="{{ $custom_avatar->id }}">
             <td>
-                <?php echo \Thumbnails\Html::thumbnail($custom_avatar->image_absolute_path.DS.$custom_avatar->image_full_name,
+                <?php echo \Thumbnails\Html::thumbnail($custom_avatar->image_path.DS.$custom_avatar->image_full_name,
                     array(
                         'mode' => 'outbound',
                         'size' => '100x100',

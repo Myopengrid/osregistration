@@ -24,7 +24,7 @@
                             <?php foreach ($avatars as $avatar): ?>
                                 <li class="span3">
                                     <a class="thumbnail">
-                                        <?php echo \Thumbnails\Html::thumbnail($avatar->image_absolute_path.DS.$avatar->image_full_name,
+                                        <?php echo \Thumbnails\Html::thumbnail($avatar->image_path.DS.$avatar->image_full_name,
                                             array(
                                                 'mode' => 'outbound',
                                                 'size' => '180x260',
@@ -37,7 +37,6 @@
                                         ?>
                                     </a>
                                 </li>
-                                {{ cc($avatar) }}
                             <?php endforeach ?>
                             </ul>
                         </div>
