@@ -28,6 +28,6 @@ class Avatar extends Eloquent {
 
     public static function active()
     {
-        return self::where_status(1)->order_by('order', 'asc')->order_by('created_at', 'desc');
+        return self::where_status(1)->order_by('order', 'asc')->order_by('updated_at', 'desc');
     }
 }
