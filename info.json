@@ -1,0 +1,61 @@
+{
+    "name": "Opensim Registration",
+    "slug": "osregistration",
+    "version": "0.0.1",
+    "core_version": "0.0.1",
+    "description": "Provides registration to opensim grid with custom avatars",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jefferson Costella",
+            "email": "jeff@localhost",
+            "role": "Lead Developer"
+        }
+    ],
+    "options": {
+            "handles": "osregistration",
+            "auto": true
+    },
+    "roles" : [
+        {
+            "name":"Access pages module",
+            "description":"Permit access to the pages index view.",
+            "slug":"backend_pages_pages_get_index",
+            "value":false
+        }
+    ],
+    "required":[
+        {
+            "name": "settings",
+            "version": "0.0.1"
+        },
+        {
+            "name": "opensim",
+            "version": "0.0.1"
+        },
+        {
+            "name": "thumbnails",
+            "version": "0.0.1"
+        }
+    ],
+    "recommended": [
+        {
+            "name": "groups",
+            "version": "1.0.0"
+        },
+        {
+            "name": "permissions",
+            "version": "1.0.0"
+        }
+    ],
+    "menu": [
+        {
+            "main_menu" : "Users",
+            "title"     : "Grid Registration",
+            "url"       : "osregistration",
+            "class"     : "",
+            "li_class"  : "",
+            "children"  : []
+        }
+    ]
+}
