@@ -225,6 +225,15 @@ class Osregistration_Backend_Avatars_Controller extends Admin_Controller {
         {
             // Remove Custom Avatar Image
             \File::delete(path('public').'bundles'.DS.'osregistration'.DS.'avatar'.DS.'images'.DS.$custom_avatar->image_full_name);
+            
+            // Remove thumbnail
+            $paths = array(
+                path('public').Config::get('thumbnails::options.image_path').DS.'180x260'.DS.'outbound-'.$custom_avatar->image_full_name,
+                path('public').Config::get('thumbnails::options.image_path').DS.'100x100'.DS.'outbound-'.$custom_avatar->image_full_name,
+
+            );
+            Event::fire('thumbnails.delete', array($paths));
+            
             // Delete Custom Avatar Appearance
             $custom_avatar->appearance()->delete();
             // Delete Custom Avatar Items
