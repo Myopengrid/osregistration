@@ -8,9 +8,9 @@
             {{ \Form::open(URL::base().'/ossignup', 'POST', array('class' => 'form-signin' )) }}
 
                 {{ \Form::token() }}
-                {{ \Form::hidden('avatar_appearance', Input::old('avatar_appearance', '0'), array('id' => 'avatar_appearance')) }}
                 
                 <?php if(isset($avatars) and !empty($avatars)): ?>
+                {{ \Form::hidden('avatar_appearance', Input::old('avatar_appearance', ''), array('id' => 'avatar_appearance')) }}
                 <h3 class="form-signin-heading">Click on the image to select your avatar.</h3>
                 <?php if($errors->has('avatar_appearance')): ?>
                 <div class="alert alert-error fade in">
@@ -42,6 +42,7 @@
                         </div>
                     </div>
                 <?php else: ?>
+                {{ \Form::hidden('avatar_appearance', Input::old('avatar_appearance', '0'), array('id' => 'avatar_appearance')) }}
                 <h3 class="form-signin-heading">Grid Sign Up</h3>
                 <br/>
                 <?php endif ?>
