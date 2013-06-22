@@ -95,7 +95,7 @@ class CustomAvatar {
             // values for this field should be
             // _ap_nn => uuid
             // Opensim Version 0.7.5
-            if(preg_match('/_ap_\d+/', $data->name))
+            if($this->check_attachment($data->name))
             {
                 if(\Opensim\UUID::is_valid($data->value))
                 {
@@ -109,7 +109,7 @@ class CustomAvatar {
             // values for this field should be
             // Wearable n:n => inventoryid:assetid
             // Opensim Version 0.7.5
-            if(preg_match('/Wearable\s\d+\:\d+/', $data->name))
+            if($this->check_wearable($data->name))
             {
                 $itemId = explode(':', $data->value);
                 if(count($itemId) == 2)
@@ -163,7 +163,7 @@ class CustomAvatar {
                     // Check for Wearable
                     // Wearable n:n => inventoryid:assetid
                     // Opensim Version 0.7.5
-                    if(preg_match('/Wearable\s\d\:\d/', $key))
+                    if($this->check_wearable($key))
                     {
                         if(isset($appearanceArray[$key]))
                         {
@@ -174,7 +174,7 @@ class CustomAvatar {
                     // Check for Attachment
                     // _ap_nn => uuid
                     // Opensim Version 0.7.5
-                    if(preg_match('/_ap_\d+/', $key))
+                    if($this->check_attachment($key))
                     {
                         if(isset($appearanceArray[$key]))
                         {
@@ -199,5 +199,15 @@ class CustomAvatar {
             }
         }
         return false;
-    } 
+    }
+
+    private function check_wearable($value)
+    {
+        return preg_match('/Wearable\s\d+\:\d+/', $value);
+    }
+
+    private function check_attachment($value)
+    {
+        return preg_match('/_ap_\d+/', $value);
+    }
 }
