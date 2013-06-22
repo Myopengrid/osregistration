@@ -109,7 +109,7 @@ class CustomAvatar {
             // values for this field should be
             // Wearable n:n => inventoryid:assetid
             // Opensim Version 0.7.5
-            if(preg_match('/Wearable\s\d\:\d/', $data->name))
+            if(preg_match('/Wearable\s\d+\:\d+/', $data->name))
             {
                 $itemId = explode(':', $data->value);
                 if(count($itemId) == 2)
