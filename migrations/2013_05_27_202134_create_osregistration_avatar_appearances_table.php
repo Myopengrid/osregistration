@@ -14,7 +14,7 @@ class Osregistration_Create_Osregistration_Avatar_Appearances_Table {
             $table->increments('id');
             $table->string('avatar_id');
             $table->string('name');
-            $table->string('value');
+            $table->text('value');
             $table->timestamps();
         });
     }
