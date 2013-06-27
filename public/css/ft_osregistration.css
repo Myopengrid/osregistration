@@ -58,9 +58,20 @@ a.active {
     -webkit-backface-visibility: hidden; /* Chrome */
     outline: 1px solid transparent; /* Firefox */
 
-    transform: rotate(7deg);
-    -ms-transform: rotate(7deg); /* IE 9 */
-    -webkit-transform: rotate(7deg); /* Safari and Chrome */
-    -o-transform: rotate(7deg); /* Opera */
-    -moz-transform: rotate(7deg); /* Firefox */
+    transform: rotate(7deg) scale(1.1);
+    -ms-transform: rotate(7deg) scale(1.1); /* IE 9 */
+    -webkit-transform: rotate(7deg) scale(1.1); /* Safari and Chrome */
+    -o-transform: rotate(7deg) scale(1.1); /* Opera */
+    -moz-transform: rotate(7deg) scale(1.1); /* Firefox */
+}
+
+a.thumbnail:hover {
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 10;
+    transform: rotate(7deg) scale(1.2);
+    -ms-transform: rotate(7deg) scale(1.2); /* IE 9 */
+    -webkit-transform: rotate(7deg) scale(1.2); /* Safari and Chrome */
+    -o-transform: rotate(7deg) scale(1.2); /* Opera */
+    -moz-transform: rotate(7deg) scale(1.2); /* Firefox */
 }
