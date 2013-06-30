@@ -16,11 +16,7 @@ class Osregistration_Create_Osregistration_Avatar_Table {
             $table->string('name');
             $table->string('slug');
             $table->string('description');
-            $table->string('image_full_name');
             $table->string('image_name');
-            $table->string('image_ext');
-            $table->string('image_path');
-            $table->string('image_absolute_path');
             $table->integer('order')->default(999);
             $table->integer('status')->default(1);
             $table->timestamps();
