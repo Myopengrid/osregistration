@@ -178,10 +178,11 @@ class Osregistration_Backend_Avatars_Controller extends Admin_Controller {
 
             if( isset($post_data['image']['error']) and $post_data['image']['error'] == 0)
             {
-                // Remove old image
-                File::delete(path('public').'bundles'.DS.'osregistration'.DS.'avatar'.DS.'images'.DS.$custom_avatar->image_full_name);
+                $image_absolute_path = path('public').'bundles'.DS.'osregistration'.DS.'avatar'.DS.'images';
                 
-                $image_absolute_path = path('public').'bundles/osregistration/avatar/images';
+                // Remove old image
+                File::delete(path('public').$image_absolute_path.DS.$custom_avatar->image_name);
+                
                 $image_name          = Opensim\UUID::random();
                 $image_ext           = '.'.get_file_extension($post_data['image']['name']);
                 $image_full_name     =  $image_name.$image_ext;
