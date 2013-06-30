@@ -93,11 +93,7 @@ class Osregistration_Backend_Avatars_Controller extends Admin_Controller {
             {
                 if(isset($image) and !empty($image))
                 {
-                    $custom_avatar->image_full_name     = $image_full_name;
-                    $custom_avatar->image_name          = $image_name;
-                    $custom_avatar->image_ext           = $image_ext;
-                    $custom_avatar->image_path          = '/bundles/osregistration/avatar/images/';
-                    $custom_avatar->image_absolute_path = $image_absolute_path;
+                    $custom_avatar->image_name          = $image_full_name;
                 }
             }
 
@@ -194,11 +190,7 @@ class Osregistration_Backend_Avatars_Controller extends Admin_Controller {
                 {
                     if(isset($image) and !empty($image))
                     {
-                        $custom_avatar->image_full_name     = $image_full_name;
-                        $custom_avatar->image_name          = $image_name;
-                        $custom_avatar->image_ext           = $image_ext;
-                        $custom_avatar->image_path          = '/bundles/osregistration/avatar/images/';
-                        $custom_avatar->image_absolute_path = $image_absolute_path;
+                        $custom_avatar->image_name          = $image_full_name;
                     }
                 }
             }
