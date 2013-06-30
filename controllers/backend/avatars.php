@@ -84,7 +84,7 @@ class Osregistration_Backend_Avatars_Controller extends Admin_Controller {
             $custom_avatar->uuid        = $post_data['clone'];
             $custom_avatar->status      = $post_data['status'];
 
-            $image_absolute_path = path('public').'bundles/osregistration/avatar/images';
+            $image_absolute_path = path('public').'bundles'.DS.'osregistration'.DS.'avatar'.DS.'images';
             $image_name          = Opensim\UUID::random();
             $image_ext           = '.'.get_file_extension($post_data['image']['name']);
             $image_full_name     =  $image_name.$image_ext;
