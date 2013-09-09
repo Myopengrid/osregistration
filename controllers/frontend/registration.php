@@ -2,6 +2,9 @@
 
 class Osregistration_Frontend_Registration_Controller extends Public_Controller {
     
+    protected $avatar_fname_min_lenght;
+    protected $avatar_lname_min_lenght;
+
     public function get_index()
     {
         $disable_signup = Config::get('settings::core.osregistration_disabled');
@@ -21,6 +24,8 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
 
     public function post_create()
     {
+        $this->avatar_fname_min_lenght = Config::get('settings::core.osregistration_fname_length', 2);
+        $this->avatar_lname_min_lenght = Config::get('settings::core.osregistration_lname_length', 2);
 
         $messages = array(
             'unique_avatar_name' => 'This combination of avatar first name and avatar last name has already been taken.',
@@ -29,8 +34,8 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
         $rules = array(
             'email'                 => 'required|email|unique:users',
             'username'              => 'required|unique:users|alpha_dash|max:30|min:3',
-            'avatar_first_name'     => 'required|alpha_dash|max:30|min:3|unique_avatar_name',
-            'avatar_last_name'      => 'required|alpha_dash|max:30|min:3',
+            'avatar_first_name'     => 'required|alpha_dash|max:30|min:'.$this->avatar_fname_min_lenght.'|unique_avatar_name',
+            'avatar_last_name'      => 'required|alpha_dash|max:30|min:'.$this->avatar_lname_min_lenght,
             'password'              => 'required|min:8',
             'password_confirmation' => 'required|same:password',
             'avatar_appearance'     => 'required|numeric',

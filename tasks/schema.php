@@ -85,6 +85,41 @@ class Osregistration_Schema_Task {
         //
         
         $registration_module = \Modules\Model\Module::where_slug('osregistration')->first();
+
+        $conf_fname_length = array(
+            'title'       => 'Avatar First Name Min Length',
+            'slug'        => 'osregistration_fname_length',
+            'description' => 'Minimum avatar first name character length',
+            'type'        => 'select',
+            'default'     => "2",
+            'value'       => "2",
+            'options'     => '{"1":"1 Character","2":"2 Characters","3":"3 Characters","4":"4 Characters","5":"5 Characters"}',
+            'class'       => '',
+            'section'     => '',
+            'validation'  => '',
+            'is_gui'      => '',
+            'module_slug' => 'osregistration',
+            'module_id'   => $registration_module->id,
+        );
+        $conf_fname_length = Settings\Model\Setting::create($conf_fname_length);
+
+        $conf_lname_length = array(
+            'title'       => 'Avatar Last Name Min Length',
+            'slug'        => 'osregistration_lname_length',
+            'description' => 'Minimum avatar last name character length',
+            'type'        => 'select',
+            'default'     => "2",
+            'value'       => "2",
+            'options'     => '{"1":"1 Character","2":"2 Characters","3":"3 Characters","4":"4 Characters","5":"5 Characters"}',
+            'class'       => '',
+            'section'     => '',
+            'validation'  => '',
+            'is_gui'      => '',
+            'module_slug' => 'osregistration',
+            'module_id'   => $registration_module->id,
+        );
+        $conf_lname_length = Settings\Model\Setting::create($conf_lname_length);
+
         
         $conf_email = array(
             'title'       => 'Grid Confirmation Email',
