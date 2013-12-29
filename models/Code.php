@@ -1,7 +1,7 @@
-<?php namespace Osregistration\Models;
+<?php namespace Osregistration\Model;
 
-use \Laravel\Eloquent;
+use \Eloquent;
 
-class Code extends Eloquent() {
-
+class Code extends Eloquent {
+    public static $table = 'osregistration_codes';
 }
