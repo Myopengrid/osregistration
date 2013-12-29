@@ -115,7 +115,7 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
             else
             {
                 // save activation record on database
-                $activation_record          = new Registration\Model\Code;
+                $activation_record          = new Osregistration\Model\Code;
                 $activation_record->user_id = $new_user->id;
                 $activation_record->code    = Mwi_Core::keygen();
                 $activation_record->save();
@@ -163,7 +163,7 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
         // Finc activation code
         if(isset($activation_code) and !empty($activation_code))
         {
-            $activation = Registration\Model\Code::where('code', '=', $activation_code)->first();
+            $activation = Osregistration\Model\Code::where('code', '=', $activation_code)->first();
         }
 
         // Validate activation code
@@ -236,7 +236,7 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
 
         if ($validation->passes())
         {
-            $pwreset_record          = new Registration\Model\Code;
+            $pwreset_record          = new Osregistration\Model\Code;
             $pwreset_record->user_id = $account->id;
             $pwreset_record->code    = Mwi_Core::keygen();
             $pwreset_record->save();
@@ -278,7 +278,7 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
 
     public function get_reset_pass($user_id, $code)
     {
-        $code_record = Registration\Model\Code::where('code', '=', $code)->where('user_id', '=', $user_id)->first();
+        $code_record = Osregistration\Model\Code::where('code', '=', $code)->where('user_id', '=', $user_id)->first();
         
         if(isset($code_record) and !empty($code_record))
         {
@@ -307,7 +307,7 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
 
         if ($validation->passes())
         {
-             $code_record = Registration\Model\Code::where('code', '=', Input::get('code'))->where('user_id', '=', Input::get('user_id'))->first();
+             $code_record = Osregistration\Model\Code::where('code', '=', Input::get('code'))->where('user_id', '=', Input::get('user_id'))->first();
             if( !isset($code_record) or empty($code_record))
             {
                 $this->data['message']      = __('osregistration::lang.An error occurred while updating your password please contact support')->get(APP_LANG);
@@ -315,7 +315,7 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
                 return Redirect::to('page/home')->with($this->data);
             }
         
-            $pass_was_updated = Registration\User::update_password(Input::get('password'), Input::get('user_id'));
+            $pass_was_updated = Osregistration\User::update_password(Input::get('password'), Input::get('user_id'));
 
             if($pass_was_updated)
             {
@@ -336,7 +336,8 @@ class Osregistration_Frontend_Registration_Controller extends Public_Controller 
 
             return Redirect::to('page/home')->with($this->data);
         }
-
-        return Redirect::to('osregistration/reset_pass')->with_errors($validation)->with_input();
+        
+        $redirect = 'osregistration/reset_pass/'.Input::get('user_id').'/'.Input::get('code');
+        return Redirect::to($redirect)->with_errors($validation)->with_input();
     }
 }
